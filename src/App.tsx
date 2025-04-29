@@ -3,6 +3,17 @@ import { LatLngExpression, DivIcon, LatLngBounds } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useState } from 'react';
 import routeDataJson from '../routes.json'; 
+import PasswordScreen from './PasswordScreen';
+
+export default function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  if (!authenticated) {
+    return <PasswordScreen onSuccess={() => setAuthenticated(true)} />;
+  }
+
+  return <InteractiveMap />;
+}
 
 const routeData: Record<string, number[][]> = routeDataJson;
 
@@ -44,7 +55,7 @@ const graph = {
   ]
 };
 
-export default function InteractiveMap() {
+export function InteractiveMap() {
   const [hoveredEdgeIdx, setHoveredEdgeIdx] = useState<number | null>(null);
   const [hoveredNodeIdx, setHoveredNodeIdx] = useState<string | null>(null);
   const [currentNodeIndex, setCurrentNodeIndex] = useState(0);
@@ -122,7 +133,7 @@ export default function InteractiveMap() {
   return (
     <div style={{ height: '100vh', width: '100vw', position: 'relative' }}>
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}>
-        <MapContainer center={[43.5, -105]} zoom={4} style={{ height: '100%', width: '100%' }}>
+      <MapContainer id="map" center={[43.5, -105]} zoom={4} style={{ height: '100%', width: '100%' }}>
           <TileLayer
             attribution="&copy; OpenStreetMap contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
