@@ -2,42 +2,78 @@ import requests
 import json
 import time
 
+# graph = {
+#     "nodes": [
+#         {"id": "Columbus", "lat": 39.9612, "lng": -82.9988},
+#         {"id": "Chicago", "lat": 41.8781, "lng": -87.6298},
+#         {"id": "Sioux Falls", "lat": 43.5446, "lng": -96.7311},
+#         {"id": "Keystone", "lat": 43.8816, "lng": -103.4591},
+#         {"id": "Cody", "lat": 44.5263, "lng": -109.0565},
+#         {"id": 'Old Faithful', "lat": 44.4605, "lng": -110.8281},
+#         {"id": "Missoula", "lat": 46.8721, "lng": -113.9940},
+#         {"id": "Seattle", "lat": 47.6062, "lng": -122.3321},
+#         {"id": "Lund", "lat": 49.9833, "lng": -124.7667},
+#         {"id": "Vancouver", "lat": 49.2827, "lng": -123.1207},
+#         {"id": "Seattle Return", "lat": 47.6062, "lng": -122.3321},
+#         {"id": "Portland", "lat": 45.5152, "lng": -122.6784},
+#         {"id": "Boise", "lat": 43.6150, "lng": -116.2023},
+#         {"id": "Denver", "lat": 39.7392, "lng": -104.9903},
+#         {"id": "St. Louis", "lat": 38.6270, "lng": -90.1994},
+#         {"id": "Columbus Return", "lat": 39.9612, "lng": -82.9988}
+#     ],
+#     "edges": [
+#         {"from": "Columbus", "to": "Chicago"},
+#         {"from": "Chicago", "to": "Sioux Falls"},
+#         {"from": "Sioux Falls", "to": "Keystone"},
+#         {"from": "Keystone", "to": "Cody"},
+#         {"from": "Cody", "to": "Old Faithful"},
+#         {"from": "Old Faithful", "to": "Missoula"},
+#         {"from": "Missoula", "to": "Seattle"},
+#         {"from": "Seattle", "to": "Lund"},
+#         {"from": "Lund", "to": "Vancouver"},
+#         {"from": "Vancouver", "to": "Seattle Return"},
+#         {"from": "Seattle Return", "to": "Portland"},
+#         {"from": "Portland", "to": "Boise"},
+#         {"from": "Boise", "to": "Denver"},
+#         {"from": "Denver", "to": "St. Louis"},
+#         {"from": "St. Louis", "to": "Columbus Return"}
+#     ]
+# }
+
 graph = {
-    "nodes": [
-        {"id": "Columbus", "lat": 39.9612, "lng": -82.9988},
-        {"id": "Chicago", "lat": 41.8781, "lng": -87.6298},
-        {"id": "Sioux Falls", "lat": 43.5446, "lng": -96.7311},
-        {"id": "Keystone", "lat": 43.8816, "lng": -103.4591},
-        {"id": "Cody", "lat": 44.5263, "lng": -109.0565},
-        {"id": 'Old Faithful', "lat": 44.4605, "lng": -110.8281},
-        {"id": "Missoula", "lat": 46.8721, "lng": -113.9940},
-        {"id": "Seattle", "lat": 47.6062, "lng": -122.3321},
-        {"id": "Lund", "lat": 49.9833, "lng": -124.7667},
-        {"id": "Vancouver", "lat": 49.2827, "lng": -123.1207},
-        {"id": "Seattle Return", "lat": 47.6062, "lng": -122.3321},
-        {"id": "Portland", "lat": 45.5152, "lng": -122.6784},
-        {"id": "Boise", "lat": 43.6150, "lng": -116.2023},
-        {"id": "Denver", "lat": 39.7392, "lng": -104.9903},
-        {"id": "St. Louis", "lat": 38.6270, "lng": -90.1994},
-        {"id": "Columbus Return", "lat": 39.9612, "lng": -82.9988}
-    ],
-    "edges": [
-        {"from": "Columbus", "to": "Chicago"},
-        {"from": "Chicago", "to": "Sioux Falls"},
-        {"from": "Sioux Falls", "to": "Keystone"},
-        {"from": "Keystone", "to": "Cody"},
-        {"from": "Cody", "to": "Old Faithful"},
-        {"from": "Old Faithful", "to": "Missoula"},
-        {"from": "Missoula", "to": "Seattle"},
-        {"from": "Seattle", "to": "Lund"},
-        {"from": "Lund", "to": "Vancouver"},
-        {"from": "Vancouver", "to": "Seattle Return"},
-        {"from": "Seattle Return", "to": "Portland"},
-        {"from": "Portland", "to": "Boise"},
-        {"from": "Boise", "to": "Denver"},
-        {"from": "Denver", "to": "St. Louis"},
-        {"from": "St. Louis", "to": "Columbus Return"}
-    ]
+  "nodes": [
+    { "id": "Columbus", "lat": 39.9612, "lng": -82.9988 },
+    { "id": "Chicago", "lat": 41.8781, "lng": -87.6298 },
+    { "id": "Sioux Falls", "lat": 43.5446, "lng": -96.7311 },
+    { "id": "Keystone", "lat": 43.8816, "lng": -103.4591 },
+    { "id": "Mount Rushmore", "lat": 43.8803, "lng": -103.4538 },
+    { "id": "Cody", "lat": 44.5263, "lng": -109.0565 },
+    { "id": "Missoula", "lat": 46.8721, "lng": -113.9940 },
+    { "id": "Seattle", "lat": 47.6062, "lng": -122.3321 },
+    { "id": "Galley Bay", "lat": 49.9833, "lng": -124.7667 },
+    { "id": "Vancouver", "lat": 49.2827, "lng": -123.1207 },
+    { "id": "Seattle Return", "lat": 47.6062, "lng": -122.3321 },
+    { "id": "Boise", "lat": 43.6150, "lng": -116.2023 },
+    { "id": "Denver", "lat": 39.7392, "lng": -104.9903 },
+    { "id": "St. Louis", "lat": 38.6270, "lng": -90.1994 },
+    { "id": "Columbus Return", "lat": 39.9612, "lng": -82.9988 }
+  ],
+  "edges": [
+    { "from": "Columbus", "to": "Chicago" },
+    { "from": "Chicago", "to": "Sioux Falls" },
+    { "from": "Sioux Falls", "to": "Keystone" },
+    { "from": "Keystone", "to": "Mount Rushmore" },
+    { "from": "Mount Rushmore", "to": "Cody" },
+    { "from": "Cody", "to": "Missoula" },
+    { "from": "Missoula", "to": "Seattle" },
+    { "from": "Seattle", "to": "Galley Bay" },
+    { "from": "Galley Bay", "to": "Vancouver" },
+    { "from": "Vancouver", "to": "Seattle Return" },
+    { "from": "Seattle Return", "to": "Boise" },
+    { "from": "Boise", "to": "Denver" },
+    { "from": "Denver", "to": "St. Louis" },
+    { "from": "St. Louis", "to": "Columbus Return" }
+  ]
 }
 
 ORS_API_KEY = "5b3ce3597851110001cf6248d0d232daa6cd4630a9f002a510f29323"  # <-- Make sure you put your API key here
@@ -75,5 +111,5 @@ for edge in graph["edges"]:
     
     time.sleep(3)  
 
-with open("routes.json", "w") as f:
+with open("routes2.json", "w") as f:
     json.dump(routes, f)
